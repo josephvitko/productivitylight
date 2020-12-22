@@ -7,7 +7,6 @@ class Light:
         self.label = label
         self.power = power
         self.color = color
-        color.set_owner(self)
 
     def set_power(self, state):
         if state != "on" and state != "off":
@@ -28,12 +27,15 @@ class Light:
         self.update_color()
 
     def update_color(self):
-        self.api.set_state(self.label, "color", self.color)
+        self.api.set_state(self.label, "color", str(self.color))
 
     def modify_color(self, hue=None, saturation=None, brightness=None, kelvin=None):
         if not hue: hue = self.color.hue
         if not saturation: saturation = self.color.saturation
         if not brightness: brightness = self.color.brightness
         if not kelvin: kelvin = self.color.kelvin
-        self.color.set(hue, saturation, brightness, kelvin)
+        self.color.set(hue, saturation, brightness, kelvin, self)
         self.update_color()
+
+    def __str__(self):
+        return self.label + ', ' + self.power + ', ' + str(self.color)

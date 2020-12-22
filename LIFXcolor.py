@@ -1,6 +1,3 @@
-from Light import Light
-
-
 class LIFXcolor:
     def __init__(self, hue, saturation, brightness, kelvin):
         self.hue = self.__set_hue(hue)
@@ -8,8 +5,9 @@ class LIFXcolor:
         self.brightness = self.__set_brightness(brightness)
         self.kelvin = self.__set_kelvin(kelvin)
 
-    def set(self, caller, hue=None, saturation=None, brightness=None, kelvin=None):
-        if not isinstance(caller, Light):
+    def set(self, hue=None, saturation=None, brightness=None, kelvin=None, caller=None,):
+        if not caller:
+            # TODO: ensure caller is of type Light without circular importing
             raise TypeError('Light color cannot be modified directly')
         if hue is None: hue = self.hue
         if saturation is None: saturation = self.saturation
@@ -25,23 +23,27 @@ class LIFXcolor:
         if not 359 >= hue >= 0:
             raise ValueError('Warning: Hue is not in range')
         self.hue = hue
+        return hue
 
     def __set_saturation(self, saturation):
         if not 1.0 >= saturation >= 0.0:
             raise ValueError('Warning: saturation is not in range')
         self.saturation = saturation
+        return saturation
 
     def __set_brightness(self, brightness):
         if not 1.0 >= brightness >= 0.0:
             raise ValueError('Warning: brightness is not in range')
         self.brightness = brightness
+        return brightness
 
     def __set_kelvin(self, kelvin):
         if not 9000 >= kelvin >= 2000:
             raise ValueError('Warning: kelvin is not in range')
         self.kelvin = kelvin
+        return kelvin
 
-    def __to_string(self):
+    def __str__(self):
         s = "hue:" + str(self.hue) + \
             " saturation:" + str(self.saturation) + \
             " brightness:" + str(self.brightness) + \
