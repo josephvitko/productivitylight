@@ -30,10 +30,10 @@ class Light:
         self.api.set_state(self.label, "color", str(self.color))
 
     def modify_color(self, hue=None, saturation=None, brightness=None, kelvin=None):
-        if not hue: hue = self.color.hue
-        if not saturation: saturation = self.color.saturation
-        if not brightness: brightness = self.color.brightness
-        if not kelvin: kelvin = self.color.kelvin
+        if hue is None: hue = self.color.hue
+        if saturation is None: saturation = self.color.saturation
+        if brightness is None: brightness = self.color.brightness
+        if kelvin is None: kelvin = self.color.kelvin
         self.color.set(hue, saturation, brightness, kelvin, self)
         self.update_color()
 
