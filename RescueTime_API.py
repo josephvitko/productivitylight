@@ -7,7 +7,7 @@ class RescueTime_API:
     def __init__(self, key):
         self.key = key
 
-    def get_time_data(self, day=str(datetime.datetime.today())[:10]):
+    def get_time_data(self, day):
         payload = {'key': self.key,
                    'perspective': 'interval',
                    'restrict_kind': 'productivity',
@@ -25,7 +25,8 @@ class RescueTime_API:
         return day_prods
 
     def get_net_productivity_today(self):
-        data = self.get_time_data()
+        day = str(datetime.datetime.today())[:10]
+        data = self.get_time_data(day)
         semi_factor = 0.5
         productive_time = data[4] + data[3] * semi_factor
         unproductive_time = data[0] + data[1] * semi_factor
