@@ -10,7 +10,8 @@ def productivity_light(lifx_token, rt_token, log=False):
         rt_api = RescueTime_API(rt_token)
 
         light = api.list_lights()[0]
-        net_productivity = rt_api.get_net_productivity_today()  # in hours
+        today = datetime.datetime.today().strftime("%Y-%m-%d")
+        net_productivity = rt_api.get_net_productivity(day=today)  # in hours
         scale = 10  # hours for max effect
         strength = abs(net_productivity / scale)
 
@@ -18,5 +19,5 @@ def productivity_light(lifx_token, rt_token, log=False):
             light.modify_color(hue=0, saturation=strength)
         else:
             light.modify_color(hue=210, saturation=strength)
-        if log: print(str(datetime.datetime.today()) + ", netP:" + str(round(net_productivity, 1)) + ", " + str(light.color))
+        if log: print(str(today) + ", netp:" + str(round(net_productivity, 1)) + ", " + str(light.color))
         time.sleep(300)
