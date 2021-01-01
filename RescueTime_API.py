@@ -7,7 +7,7 @@ class RescueTime_API:
     def __init__(self, key):
         self.key = key
 
-    def get_time_data(self, day=str(datetime.datetime.today())[:10]):
+    def get_time_data(self, day=str(datetime.date.today())):
         payload = {'key': self.key,
                    'perspective': 'interval',
                    'restrict_kind': 'productivity',
