@@ -12,7 +12,8 @@ def productivity_light(lifx_token, rt_token, ct_token='', log=False, circadian=T
         ct_api = CircadianTemperature(ct_token)
 
         light = api.list_lights()[0]
-        net_productivity = rt_api.get_net_productivity_today()  # in hours
+        today = datetime.date.today()
+        net_productivity = rt_api.get_net_productivity(today)  # in hours
         scale = 10  # hours for max effect
         strength = abs(net_productivity / scale)
 
@@ -25,5 +26,5 @@ def productivity_light(lifx_token, rt_token, ct_token='', log=False, circadian=T
             light.modify_color(hue=0, saturation=strength, kelvin=temp)
         else:
             light.modify_color(hue=137, saturation=strength, kelvin=temp)
-        if log: print(str(datetime.datetime.today()) + ", " + str(light.color))
+        if log: print(str(datetime.datetime.today()) + ", " + ", netp: " + str(round(net_productivity, 1)) + ', ' + str(light.color))
         time.sleep(300)
