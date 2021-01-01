@@ -13,11 +13,11 @@ class CircadianTemperature:
         }
         return requests.get('https://api.ipgeolocation.io/astronomy', params=params).json()
 
-    def get_temperature(self, current_time=datetime.datetime.now().time(), log=False):
+    def get_temperature(self, log=False):
         sun_data = self.__get_data()
         sunrise = ttn(datetime.time(int(sun_data['sunrise'][:2]), int(sun_data['sunrise'][3:])))
         sunset = ttn(datetime.time(int(sun_data['sunset'][:2]), int(sun_data['sunset'][3:])))
-        current_time = ttn(current_time)
+        current_time = ttn(datetime.datetime.today().time())
         if log: print('sunrise:', sunrise, 'sunset:', sunset, 'current_time:', current_time)
 
         if current_time < sunrise:

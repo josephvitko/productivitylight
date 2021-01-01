@@ -12,8 +12,7 @@ def productivity_light(lifx_token, rt_token, ct_token='', log=False, circadian=T
         ct_api = CircadianTemperature(ct_token)
 
         light = api.list_lights()[0]
-        today = datetime.date.today()
-        net_productivity = rt_api.get_net_productivity(today)  # in hours
+        net_productivity = rt_api.get_net_productivity()  # in hours
         scale = 10  # hours for max effect
         strength = abs(net_productivity / scale)
 
