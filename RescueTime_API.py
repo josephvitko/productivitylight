@@ -17,9 +17,20 @@ class RescueTime_API:
                    'format': 'json'
                    }
         print(payload)  # for debugging
-        response = requests.get('https://www.rescuetime.com/anapi/data', params=payload)
-        data = response.json().get('rows')
-        print(data)  # for debugging
+        attempts = 0
+        while True:
+            try:
+                response = requests.get('https://www.rescuetime.com/anapi/data', params=payload)
+                data = response.json().get('rows')
+                print(data)  # for debugging
+            except ValueError:
+                print('Decoding JSON has failed')
+                if attempts < 5:
+                    print('Trying to get RescueTime data again')
+                    continue
+                else:
+                    raise ValueError('RescueTime JSON data failed to be decoded. Attempts exhausted')
+            break
         day_prods = [0, 0, 0, 0, 0]
         for row in data:
             level = row[3]
