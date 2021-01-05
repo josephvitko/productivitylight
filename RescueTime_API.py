@@ -42,6 +42,8 @@ class RescueTime_API:
         semi_factor = 0.5
         productive_time = data[4] + data[3] * semi_factor
         unproductive_time = data[0] + data[1] * semi_factor
+        self.productive_time = productive_time
+        self.unproductive_time = unproductive_time
         return productive_time - unproductive_time
 
 
