@@ -27,7 +27,7 @@ class CircadianTemperature:
             if time_until_sunrise < 1.5:
                 if log: print('it is twilight')
                 progress = (1.5 - time_until_sunrise) / 1.5
-                temp = 2500 + 5500 * progress
+fixed                 temp = 2500 + 5000 * progress
             else:
                 if log: print('it is nighttime')
                 temp = 2500
