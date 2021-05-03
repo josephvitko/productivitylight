@@ -28,10 +28,10 @@ This will begin an infinite loop of getting your daily productivity from RescueT
 To enable Circadian mode, pass in the additional parameters circadian=True and ct_token='your ipgeolocation api key'.
 
 Additional configuration is possible by setting any of the following paramters:
--scale: number of hours of net productive/distracting time for the light color to reach max saturation, default 10
--prod_hue: hue (in degrees) of the light's color when net daily productivity is positive, default 137 (blue)
--dist_hue: hue (in degrees) of the light's color when net daily productivity is negative, default 0 (red)
--cycle_length: length in seconds of how often the light color should be updated, default 300
--light_index: the index of the light to use (you may need to experiment with this in multi-light setups), default 0
--debug: True/False option to display debug info in console, default False
--log_url: optional url to send RescueTime data to log on a personal server
+- scale: number of hours of net productive/distracting time for the light color to reach max saturation, default 10
+- prod_hue: hue (in degrees) of the light's color when net daily productivity is positive, default 137 (blue)
+- dist_hue: hue (in degrees) of the light's color when net daily productivity is negative, default 0 (red)
+- cycle_length: length in seconds of how often the light color should be updated, default 300
+- light_index: the index of the light to use (you may need to experiment with this in multi-light setups), default 0
+- debug: True/False option to display debug info in console, default False
+- log_url: optional url to send RescueTime data to log on a personal server
