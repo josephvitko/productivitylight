@@ -21,7 +21,8 @@ Overall, these changes in color and temperature are meant to promote a healthy a
 ## Usage
 Implementing the main functionality of Productivity Light is easy:
 
-productivity_light(lifx_token='insert lifx api key here', rt_token='insert rescuetime api key here')
+    from productivity_light import productivity_light
+    productivity_light(lifx_token='insert lifx api key here', rt_token='insert rescuetime api key here')
 
 This will begin an infinite loop of getting your daily productivity from RescueTime and setting the color of your LIFX light. You can keep this running on your machine or as a background task on a server
 
