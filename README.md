@@ -41,4 +41,4 @@ Additional configuration is possible by setting any of the following parameters:
 - debug: True/False option to display debug info in console, default False
 - log_url: optional url to send RescueTime data to log on a personal server
 
-If you are looking to create a custom implementation, this library provides a wrapper for using the LIFX API to set the color of a light and using the RescueTime API to download productivity data.
+If you are creating a custom implementation, this library provides a wrapper for using the LIFX API to set the color of a light and using the RescueTime API to download productivity data.
