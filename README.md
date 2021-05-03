@@ -20,5 +20,4 @@ Overall, these changes in color and temperature are meant to promote a healthy a
 
 ## Usage
 Implementing the main functionality of Productivity Light is easy:
-    productivity_light(lifx_token={insert lifx api key here},
-                       rt_token={inset rescuetime api key here})
+    productivity_light(lifx_token={insert lifx api key here}, rt_token={inset rescuetime api key here})
