@@ -11,3 +11,6 @@ First, your net-productivity in hours is calculated by subtracting your distract
 Your light's hue will then bet set depending on if this value is positive or negative. By default, green indicates more productive time than distracting time while red indicates the opposite.
 
 The saturation of this color is calculated by dividing your net-productivity by a scale factor. This factor is preset to 10 hours, but can be configured (as can your choices for hues). So, if you had 8 productive hours today and 3 unproductive hours, your light would be green with a saturation of 50%. If net-productivity is 0, the color will simply be white. 
+
+The human body's work and sleep schedule naturally follows changes in sunlight, especially changes in blue light exposure throughout the day. Circadian mode mimics these changes by adjusting the light's temperature to be warmer or bluer based on what time it is.
+
