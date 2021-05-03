@@ -19,6 +19,10 @@ At night, the light will be a warm 2500K, similar to a candle. Beginning an hour
 Overall, these changes in color and temperature are meant to promote a healthy and productive schedule.
 
 ## Usage
+Dependencies required:
+- datetime
+- requests
+
 Implementing the main functionality of Productivity Light is easy:
 
     from productivity_light import productivity_light
