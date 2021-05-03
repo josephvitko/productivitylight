@@ -1,3 +1,5 @@
+# Represents the properties of an LIFX light, including hue, saturation, brightness, and kelvin (temperature)
+# This object should only be modified by a Light object, as direct modification would not adjust physical LIFX light
 class LIFXcolor:
     def __init__(self, hue, saturation, brightness, kelvin):
         self.hue = self.__set_hue(hue)
@@ -40,7 +42,7 @@ class LIFXcolor:
     def __set_kelvin(self, kelvin):
         if not 9000 >= kelvin >= 2000:
             raise ValueError('Warning: kelvin is not in range')
-        self.kelvin = kelvin
+        self.kelvin = int(kelvin)
         return kelvin
 
     def __str__(self):
@@ -50,6 +52,3 @@ class LIFXcolor:
             " kelvin:" + str(self.kelvin)
         return s
 
-# c = LIFXcolor(0, 0.5, 0.5, 6000)
-# print(c.to_string())
-# c.validate()

@@ -1,6 +1,7 @@
 import datetime
 
 
+# converts a datetime time to number of hours as a float
 def time_to_num(time):
     if type(time) != datetime.time:
         raise TypeError('Function parameter must be a datetime time')

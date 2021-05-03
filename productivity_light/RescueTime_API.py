@@ -3,10 +3,12 @@ import requests
 from pprint import pprint
 
 
+# RescueTime API wrapper
 class RescueTime_API:
     def __init__(self, key):
         self.key = key
 
+    # returns time spent doing activities in each productive category today
     def get_time_data(self):
         payload = {'key': self.key,
                    'perspective': 'interval',
@@ -16,13 +18,13 @@ class RescueTime_API:
                    'restrict_end': str(datetime.datetime.today().date()),
                    'format': 'json'
                    }
-        print(payload)  # for debugging
+        # print(payload)  # for debugging
         attempts = 0
         while True:
             try:
                 response = requests.get('https://www.rescuetime.com/anapi/data', params=payload)
                 data = response.json().get('rows')
-                print(data)  # for debugging
+                # print(data)  # for debugging
             except ValueError:
                 print('Decoding JSON has failed')
                 if attempts < 5:
@@ -37,6 +39,7 @@ class RescueTime_API:
             day_prods[level + 2] = row[1] / 3600.0
         return day_prods
 
+    # calculates net productivity (productive time - distracting time)
     def get_net_productivity(self):
         data = self.get_time_data()
         semi_factor = 0.5

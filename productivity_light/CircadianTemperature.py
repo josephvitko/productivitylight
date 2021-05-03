@@ -1,8 +1,9 @@
 import requests
 import datetime
-from time_to_num import time_to_num as ttn
+from productivity_light.time_to_num import time_to_num as ttn
 
 
+# Uses IP geolocation API to get local sunrise and sunset times and calculates an ideal light temperature in kelvin
 class CircadianTemperature:
     def __init__(self, key):
         self.key = key

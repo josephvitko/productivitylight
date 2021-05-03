@@ -1,6 +1,7 @@
 import requests
 
 
+# posts RescueTime data to a specified personal server for logging
 class Logging_API:
     def __init__(self, url):
         self.url = url

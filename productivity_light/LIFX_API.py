@@ -1,13 +1,16 @@
 import requests
-from LIFXcolor import LIFXcolor
-from Light import Light
+from productivity_light.LIFXcolor import LIFXcolor
+from productivity_light.Light import Light
 
 
+# LIFX API wrapper
 class LIFX_API:
+    # constructor that requires LIFX API token
     def __init__(self, token):
         self.token = token
         self.headers = {"Authorization": "Bearer %s" % token}
 
+    # returns a list of Light objects for each of the user's LIFX lights
     def list_lights(self):
         response = requests.get('https://api.lifx.com/v1/lights/all', headers=self.headers)
         lights_dict = response.json()
@@ -25,6 +28,7 @@ class LIFX_API:
             lights.append(light)
         return lights
 
+    # sets a LIFX light with a particular label to a specified state
     def set_state(self, label, state, value):
         payload = {
             state: value
@@ -33,6 +37,7 @@ class LIFX_API:
                      headers=self.headers,
                      data=payload)
 
+    # validates that a color string is in a format that the LIFX API can understand
     def validate_color(self, color_string):
         response = requests.get('https://api.lifx.com/v1/color', params={'string': color_string}, headers=self.headers)
         print(response.text)
