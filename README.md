@@ -26,7 +26,9 @@ Dependencies required:
 Implementing the main functionality of Productivity Light is easy:
 
     from productivity_light import productivity_light
-    productivity_light(lifx_token='insert lifx api key here', rt_token='insert rescuetime api key here')
+    
+    productivity_light(lifx_token='insert lifx api key here', 
+                       rt_token='insert rescuetime api key here')
 
 This will begin an infinite loop of getting your daily productivity from RescueTime and setting the color of your LIFX light. You can keep this running on your machine or as a background task on a server.
 
